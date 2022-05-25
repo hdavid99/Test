@@ -1,0 +1,810 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "ApiPapeletasOperaciones",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "/ApiPapeletasOperaciones"
+    }
+  ],
+  "paths": {
+    "/api/DatosPapeletaOperacion/CreateDatosPapeletaOperacion": {
+      "post": {
+        "tags": [
+          "DatosPapeletaOperacion"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DatosPapeletaOperacionDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DatosPapeletaOperacionDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DatosPapeletaOperacionDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/EnvioPapeleta/EnvioPapeletaOperacion": {
+      "post": {
+        "tags": [
+          "EnvioPapeleta"
+        ],
+        "parameters": [
+          {
+            "name": "tipoEnvio",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/EnvioPapeleta/NotificaProcesoPapeletas": {
+      "post": {
+        "tags": [
+          "EnvioPapeleta"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NotificaProcesoPapeletasRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NotificaProcesoPapeletasRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/NotificaProcesoPapeletasRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/PapeletaOperacion/GetPapeletasOperacionesEnvio": {
+      "get": {
+        "tags": [
+          "PapeletaOperacion"
+        ],
+        "parameters": [
+          {
+            "name": "idEstado",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "envio",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/PapeletaOperacion/GetPapeletaOperacion": {
+      "get": {
+        "tags": [
+          "PapeletaOperacion"
+        ],
+        "parameters": [
+          {
+            "name": "idPapeleta",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/PapeletaOperacion/CreatePapeletaOperacion": {
+      "post": {
+        "tags": [
+          "PapeletaOperacion"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PapeletaOperacionDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PapeletaOperacionDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PapeletaOperacionDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/PapeletaOperacion/CreatePapeleta": {
+      "post": {
+        "tags": [
+          "PapeletaOperacion"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePapeletaRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePapeletaRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePapeletaRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/PapeletaOperacion/UpdatePapeletaOperacion": {
+      "patch": {
+        "tags": [
+          "PapeletaOperacion"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PapeletaOperacionDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PapeletaOperacionDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PapeletaOperacionDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/PapeletaOperacion/SetSucursalPapeletas": {
+      "patch": {
+        "tags": [
+          "PapeletaOperacion"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CreatePapeletaRequest": {
+        "required": [
+          "idPapeletaOperacion",
+          "papeletaXML"
+        ],
+        "type": "object",
+        "properties": {
+          "idPapeletaOperacion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "papeletaXML": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DatosPapeletaOperacionDTO": {
+        "required": [
+          "consecutivo",
+          "descripcionEspecie",
+          "fechaOperacion",
+          "fraccion",
+          "lblComision",
+          "nemotecnico",
+          "numeroControl",
+          "numeroOperacion",
+          "punta",
+          "tipo"
+        ],
+        "type": "object",
+        "properties": {
+          "idDatosPapeleta": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "tipo": {
+            "type": "string"
+          },
+          "punta": {
+            "type": "string"
+          },
+          "fechaOperacion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "numeroOperacion": {
+            "type": "string"
+          },
+          "consecutivo": {
+            "type": "string"
+          },
+          "fraccion": {
+            "type": "string"
+          },
+          "fechaCumplimiento": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "nemotecnico": {
+            "type": "string"
+          },
+          "condicion": {
+            "type": "string",
+            "nullable": true
+          },
+          "descripcionEspecie": {
+            "type": "string"
+          },
+          "cliente": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoDocCliente": {
+            "type": "string",
+            "nullable": true
+          },
+          "numeroDocCliente": {
+            "type": "string",
+            "nullable": true
+          },
+          "condicionFiscalCliente": {
+            "type": "string",
+            "nullable": true
+          },
+          "ciudadCliente": {
+            "type": "string",
+            "nullable": true
+          },
+          "direccionCliente": {
+            "type": "string",
+            "nullable": true
+          },
+          "cliente2": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoDocCliente2": {
+            "type": "string",
+            "nullable": true
+          },
+          "numeroDocCliente2": {
+            "type": "string",
+            "nullable": true
+          },
+          "condicionFiscalCliente2": {
+            "type": "string",
+            "nullable": true
+          },
+          "cliente3": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoDocCliente3": {
+            "type": "string",
+            "nullable": true
+          },
+          "numeroDocCliente3": {
+            "type": "string",
+            "nullable": true
+          },
+          "condicionFiscalCliente3": {
+            "type": "string",
+            "nullable": true
+          },
+          "afiliado": {
+            "type": "string",
+            "nullable": true
+          },
+          "nitAfiliado": {
+            "type": "string",
+            "nullable": true
+          },
+          "condicionFiscalAfiliado": {
+            "type": "string",
+            "nullable": true
+          },
+          "plazoEmision": {
+            "type": "string",
+            "nullable": true
+          },
+          "tasaNominalOSpread": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "periodicidad": {
+            "type": "string",
+            "nullable": true
+          },
+          "reinversion": {
+            "type": "string",
+            "nullable": true
+          },
+          "fechaEmision": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "fechaVencimiento": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "diasVencimiento": {
+            "type": "string",
+            "nullable": true
+          },
+          "valorMonedaLiquidacion": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "fechaValorMonedaLiquidacion": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "valorIndicadorActual": {
+            "type": "string",
+            "nullable": true
+          },
+          "fechaIndicadorActual": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "valorIndicadorPrevio": {
+            "type": "string",
+            "nullable": true
+          },
+          "fechaIndicadorPrevio": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "valorMaxCorredorIndicador": {
+            "type": "string",
+            "nullable": true
+          },
+          "valorMinCorredorIndicador": {
+            "type": "string",
+            "nullable": true
+          },
+          "precioCesionOTasa": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoOperacion": {
+            "type": "string",
+            "nullable": true
+          },
+          "conformoCodigo": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoNegocio": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoMercado": {
+            "type": "string",
+            "nullable": true
+          },
+          "origenOperacion": {
+            "type": "string",
+            "nullable": true
+          },
+          "deposito": {
+            "type": "string",
+            "nullable": true
+          },
+          "tasaSimultanea": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "fechaSalida": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "fechaRegreso": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "diasPlazoSimultanea": {
+            "type": "string",
+            "nullable": true
+          },
+          "valorSalida": {
+            "type": "string",
+            "nullable": true
+          },
+          "valorRegreso": {
+            "type": "string",
+            "nullable": true
+          },
+          "tasaEquival365": {
+            "type": "string",
+            "nullable": true
+          },
+          "tasaRecompra": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "fechaRecompra": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "diasRecompra": {
+            "type": "string",
+            "nullable": true
+          },
+          "valorRecompra": {
+            "type": "string",
+            "nullable": true
+          },
+          "valorCaptacion": {
+            "type": "string",
+            "nullable": true
+          },
+          "precioOTasaAdjudicacion": {
+            "type": "string",
+            "nullable": true
+          },
+          "rentabilidadRegistro": {
+            "type": "string",
+            "nullable": true
+          },
+          "rentabilidadComision": {
+            "type": "string",
+            "nullable": true
+          },
+          "diferenciaRentCV": {
+            "type": "string",
+            "nullable": true
+          },
+          "rentabilidadNeta": {
+            "type": "string",
+            "nullable": true
+          },
+          "cantidad": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "precio": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "valor": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "porcentajeComision": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "comision": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "overnigth": {
+            "type": "string",
+            "nullable": true
+          },
+          "porcentajeReteFuente": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "valorReteFuente": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "porcentajeTrasladoReteFuente": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "valorTrasladoReteFuente": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "sancionCumplimientoExtemporaneo": {
+            "type": "string",
+            "nullable": true
+          },
+          "valorNeto": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "porcentajeIVAComision": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "ivaComision": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "valorNetoIncIVA": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "entregaContrapago": {
+            "type": "string",
+            "nullable": true
+          },
+          "montoRendimientos": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "tasaAplicada": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "fechaIniPeriodoRendimientos": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "fechaFinPeriodoRendimientos": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "observaciones": {
+            "type": "string",
+            "nullable": true
+          },
+          "numeroControl": {
+            "type": "string"
+          },
+          "fechaHoraImpresion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lblComision": {
+            "type": "string"
+          },
+          "lblPosicionCumplimientoExtemporaneo": {
+            "type": "string",
+            "nullable": true
+          },
+          "fechaCreacion": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "NotificaProcesoPapeletasRequest": {
+        "type": "object",
+        "properties": {
+          "fecha": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "correo": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PapeletaOperacionDTO": {
+        "required": [
+          "fechaCreacion",
+          "fechaEstado",
+          "fechaOperacion",
+          "idBvcPapeletasOprcns",
+          "idDatosPapeleta",
+          "idEstado",
+          "numeroDocumento",
+          "numeroFraccion",
+          "numeroOperacion",
+          "punta",
+          "tipoDocumento"
+        ],
+        "type": "object",
+        "properties": {
+          "idPapeleta": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "idDatosPapeleta": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "idBvcPapeletasOprcns": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "idEstado": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fechaEstado": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "tipoDocumento": {
+            "type": "string"
+          },
+          "numeroDocumento": {
+            "type": "string"
+          },
+          "folio": {
+            "type": "string",
+            "nullable": true
+          },
+          "fechaOperacion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "numeroOperacion": {
+            "type": "string"
+          },
+          "punta": {
+            "type": "string"
+          },
+          "numeroFraccion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "papeletaBase64": {
+            "type": "string",
+            "nullable": true
+          },
+          "nombreArchivo": {
+            "type": "string",
+            "nullable": true
+          },
+          "envioEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "idGrupoNotificacion": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "nombreGrupoNotificacion": {
+            "type": "string",
+            "nullable": true
+          },
+          "horaNotificacionGrupo": {
+            "type": "string",
+            "nullable": true
+          },
+          "correoNotificacion": {
+            "type": "string",
+            "nullable": true
+          },
+          "correoAlternoNotificacion": {
+            "type": "string",
+            "nullable": true
+          },
+          "fechaNotificacion": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "sucursal": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "fechaCreacion": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
